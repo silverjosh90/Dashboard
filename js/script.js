@@ -59,11 +59,22 @@ weatherCall.done(function(response){
 
 
 var redditCall = $.ajax({
-    url:
+    url: "https://www.reddit.com/top.json",
     method: "GET",
     dataType: "Json"
 })
 
 redditCall.done(function(response){
+
+  var reddLoop = response["data"]["children"]
+  for (var i = 0; i < 10; i++) {
+    if(reddLoop[i]["data"]["preview"]["images"][0]["source"]["url"]) {
+    var url = reddLoop[i]["data"]["preview"]["images"][0]["source"]["url"];
+    var title = reddLoop[i]["data"]["title"]
+  }
+  }
+
+
+  console.log(url, "<br>", title)
 
 })
