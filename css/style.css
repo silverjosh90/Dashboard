@@ -1,0 +1,10 @@
+#search{
+  font-size: .7em;
+  position: fixed;
+}
+#news{
+  padding-top: 55px;
+}
+#yo{
+  z-index: 1;
+}

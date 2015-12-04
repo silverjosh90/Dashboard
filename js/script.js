@@ -1,3 +1,8 @@
+
+washpost = $('#washpostnews')
+weather = $('#weather')
+
+
 search = $("#search")
 oldSearchURL = "https://www.google.com/?gws_rd=ssl#q="
 derp = $(".derp")
@@ -38,8 +43,20 @@ call.done(function(response){
     var title = artLoop[i]["title"]
     var abstract = artLoop[i]["abstract"]
 
+
     var output ="<a href="+url+">" + title +"</a><br/>"+abstract+"<br/><br/>"
     derp.append(output)
+=======
+    console.log(abstract)
+
+    var output ="<div class='card z-depth-2'>"+
+            "<div class='card-content teal accent-1'>"+
+              "<h5><a href='"+url+"'>"+title+"</a></h5>"+
+              "<p id+'yo'>"+abstract+"</p>"+
+            "</div>"+
+          "</div>"
+    washpost.append(output)
+
   }
 
 
@@ -54,6 +71,7 @@ var weatherCall = $.ajax({
 weatherCall.done(function(response){
   var temp = response["current_observation"]["temperature_string"]
   var icon = response["current_observation"]["icon_url"]
+
   derp.append("<p>" +temp+ "</p>"+ "<img src='"+icon+"'/><br/>")
 })
 
@@ -78,3 +96,17 @@ redditCall.done(function(response){
   console.log(url, "<br>", title)
 
 })
+
+  weather.append("<div class='card-panel teal lighten-3 z-depth-5'>"+"<div class='card-content'>"+"<h1>" +temp+ "</h1>"+"</div>"+"</div>")
+})
+//
+//
+// var redditCall = $.ajax({
+//     url:
+//     method: "GET",
+//     dataType: "Json"
+// })
+//
+// redditCall.done(function(response){
+//
+// })
